@@ -261,6 +261,8 @@ main {
   border-radius: 1rem;
   /* text-align: center; */
   background-color: var(--gris-claro);
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .listado-gastos {

@@ -91,12 +91,12 @@ const Modal = ({
                 <label htmlFor="cantidad">Cantidad</label>
 
                 <input 
-                    type="number" 
-                    min={0}
+                    type="text" 
                     id="cantidad"
+                    autoComplete='off'
                     placeholder='Añade la cantidad del gasto: ej. 300'
                     value={cantidad}
-                    onChange={e => {setCantidad(Number(e.target.value))}}
+                    onChange={e => {setCantidad(Number(e.target.value.replace(/[^0-9]/g, "")))}}
                 />
             </div>
 
