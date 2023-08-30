@@ -83,7 +83,7 @@ function App() {
       // Nuevo
       gasto.id = generateId();
       gasto.fecha = Date.now();
-      setGastos([...gastos, gasto])
+      setGastos([gasto, ...gastos])
     }
 
     setAnimarModal(false)

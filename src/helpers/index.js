@@ -11,6 +11,9 @@ export const formatearFecha = (fecha) => {
     year: "numeric",
     month: "long",
     day: "2-digit",
+    hour: "numeric", // Añadir la hora
+    minute: "numeric", // Añadir los minutos
+    hour12: true, // Configurar para usar formato de 12 horas (am/pm)
   };
 
   return fechaNUeva.toLocaleDateString("es-ES", opciones);
