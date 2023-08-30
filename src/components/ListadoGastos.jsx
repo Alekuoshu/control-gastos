@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react"
+import { FormatearCantidad } from "../helpers"
 import Gasto from "./Gasto"
 
 const ListadoGastos = ({
@@ -8,13 +10,20 @@ const ListadoGastos = ({
   gastosFiltrados
 
 }) => {
+  const [gatadoFiltro, setGastadoFiltro] = useState(0)
+
+  useEffect( () => {
+    const totalGastadoFiltro = gastosFiltrados.reduce((total, gasto) => gasto.cantidad + total, 0)
+    setGastadoFiltro(totalGastadoFiltro)
+  }, [gastosFiltrados])
+
   return (
     <div className="listado-gastos contenedor">
 
       {
         filtro ? (
           <>
-            <h2>{gastosFiltrados.length ? 'Gastos' : 'No hay gastos en esta categoría'}</h2>
+            <h2>{gastosFiltrados.length ? 'Gastos -> Total Filtrado: ' + FormatearCantidad(gatadoFiltro) : 'No hay gastos en esta categoría'}</h2>
 
             {gastosFiltrados.map( gasto => (
                 <Gasto 

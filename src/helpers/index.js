@@ -20,8 +20,13 @@ export const formatearFecha = (fecha) => {
 };
 
 export const FormatearCantidad = (cantidad) => {
-  return cantidad.toLocaleString("es-US", {
+  const opciones = {
     style: "currency",
     currency: "USD",
-  });
+    minimumFractionDigits: 0, // Sin decimales
+    maximumFractionDigits: 0, // Sin decimales
+    useGrouping: true, // Para usar puntos en miles y millones
+  };
+
+  return cantidad.toLocaleString("en-US", opciones).replace(/,/g, ".");
 };
