@@ -23,7 +23,7 @@ const ListadoGastos = ({
       {
         filtro ? (
           <>
-            <h2>{gastosFiltrados.length ? 'Gastos -> Total Filtrado: ' + FormatearCantidad(gatadoFiltro) : 'No hay gastos en esta categoría'}</h2>
+            <h2>{gastosFiltrados.length ? 'Gastos -> Total: ' + FormatearCantidad(gatadoFiltro) : 'No hay gastos en esta categoría'}</h2>
 
             {gastosFiltrados.map( gasto => (
                 <Gasto 

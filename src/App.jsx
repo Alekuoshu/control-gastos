@@ -79,11 +79,22 @@ function App() {
       setGastos(gastoActualizado);
       setGastoEditar({});
 
+      // actualiza el filtrado
+      if(filtro && gasto.categoria === filtro) {
+        const gastoFiltradoActualizado = gastosFiltrados.map( gastoState => gastoState.id === gasto.id ? gasto : gastoState);
+        setGastosFiltrados(gastoFiltradoActualizado)
+      }
+
     }else{
       // Nuevo
       gasto.id = generateId();
       gasto.fecha = Date.now();
       setGastos([gasto, ...gastos])
+
+      // actualiza el filtrado
+      if(filtro && gasto.categoria === filtro) {
+        setGastosFiltrados([gasto, ...gastosFiltrados])
+      }
     }
 
     setAnimarModal(false)
