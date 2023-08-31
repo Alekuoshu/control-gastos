@@ -111,7 +111,8 @@ const Modal = ({
                 <label htmlFor="cantidad">Cantidad</label>
 
                 <input 
-                    type="text" 
+                    type="tel" 
+                    // type="text" 
                     id="cantidad"
                     autoComplete='off'
                     placeholder='Añade la cantidad del gasto: ej. 300'
