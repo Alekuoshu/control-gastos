@@ -3,6 +3,7 @@ import { generateId } from "../helpers"
 import IconoAhorro from "../img/icono_ahorro.png"
 import IconoNetflix from "../img/icono_netflix.png"
 import IconoSpotify from "../img/icono_spotify.png"
+import IconoPrime from "../img/icono_prime.png"
 import IconoInternet from "../img/icono_internet.png"
 import IconoPospago from "../img/icono_pospago.png"
 import IconoArriendo from "../img/icono_arriendo.png"
@@ -15,6 +16,7 @@ const ArraysIconos = [
     {'gasto' : 'Ahorros', 'img' : IconoAhorro, 'categoria' : 'ahorro'},
     {'gasto' : 'Pago Netflix', 'img' : IconoNetflix, 'categoria' : 'suscripciones'},
     {'gasto' : 'Pago Spotify', 'img' : IconoSpotify, 'categoria' : 'suscripciones'},
+    {'gasto' : 'Pago Prime Video', 'img' : IconoPrime, 'categoria' : 'suscripciones'},
     {'gasto' : 'Pago Internet', 'img' : IconoInternet, 'categoria' : 'servicios'},
     {'gasto' : 'Pago renta pospago', 'img' : IconoPospago, 'categoria' : 'servicios'},
     {'gasto' : 'Pago Arriendo', 'img' : IconoArriendo, 'categoria' : 'casa'},
