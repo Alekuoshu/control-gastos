@@ -82,6 +82,7 @@ header h1 {
 .formulario .campo {
   display: grid;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .formulario label {
@@ -103,7 +104,8 @@ header h1 {
   height: 40px;
 }
 .formulario input[type="submit"],
-.formulario button {
+.formulario button,
+.formulario .campo a {
   background-color: #1048a4;
   border: none;
   padding: 1rem;
@@ -124,7 +126,8 @@ header h1 {
   }
 }
 .formulario input[type="submit"]:hover,
-.formulario button:hover {
+.formulario button:hover,
+.formulario .campo a:hover {
   background-color: #042a67;
   cursor: pointer;
 }
@@ -424,6 +427,104 @@ body .modal {
   text-align: right;
 }
 
+#btn_add_default {
+  position: absolute;
+  width: 45px;
+  right: -1px;
+  top: 33px;
+  padding: 1rem 1rem;
+  border-radius: 0rem 1rem 1rem 0rem;
+  height: 40px;
+  border: 1px solid #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-add-default {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 1);
+  top: 15%;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  height: 420px;
+  width: 100%;
+  max-width: 500px;
+  min-width: 300px;
+  margin: auto;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.modal-add-default h3 {
+  text-align: center;
+}
+
+.modal-add-default.animar {
+  opacity: 1;
+}
+
+.modal-container {
+  padding: 30px;
+  padding-top: 60px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.modal-item {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 5px;
+  margin: 15px;
+  box-shadow: 1px 2px 4px #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+.modal-item:hover {
+  opacity: 0.8;
+}
+
+.modal-item img {
+  width: 100%;
+  padding: 2px;
+}
+
+.btn-cerrar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 1px solid #000;
+  padding: 5px;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
   .nuevo-gasto img:hover {
@@ -536,5 +637,12 @@ body .modal {
     padding: 1rem 3rem;
     margin: 1rem auto 1rem auto;
     font-size: 1.4rem;
+  }
+  #btn_add_default {
+    top: 13px;
+    height: 40px;
+    right: -1px;
+    border-radius: 0rem 1rem 1rem 0rem;
+    border: 1px solid #fff;
   }
 }

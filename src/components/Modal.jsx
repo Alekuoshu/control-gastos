@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Mensaje from "./Mensaje";
 import CerraBtn from '../img/cerrar.svg'
+import ModalGastoDefault from './ModalGastoDefault';
 
 const Modal = ({
     setModal, 
@@ -18,6 +19,8 @@ const Modal = ({
     const [mensaje, setMensaje] = useState('')
     const [id, setId] = useState('')
     const [fecha, setFecha] = useState('')
+    const [modalAddDefault, setModalAddDefault] = useState(false)
+    const [animar, setAnimar] = useState(false)
 
     // setea los inputs del formulario para la edición
     useEffect( () => {
@@ -58,6 +61,17 @@ const Modal = ({
         OcultarModal();
     }
 
+    const handleAddDefault = e => {
+        e.preventDefault();
+
+        setModalAddDefault(true)
+
+        setTimeout(function () {
+            setAnimar(true)
+        }, 400);
+        
+    }
+
   return (
     <div className="modal">
         <div className="cerrar-modal">
@@ -85,6 +99,12 @@ const Modal = ({
                     value={nombre}
                     onChange={e => {setNombre(e.target.value)}}
                 />
+
+                <a 
+                    id="btn_add_default"
+                    title='Añadir por defecto'
+                    onClick={handleAddDefault}
+                >+</a>
             </div>
 
             <div className="campo">
@@ -126,6 +146,14 @@ const Modal = ({
 
             <button type='submit'>{gastoEditar.id ? 'Guardar Cambios' : 'Añadir Gasto'}</button>
         </form>
+
+        {modalAddDefault && <ModalGastoDefault 
+            setModalAddDefault={setModalAddDefault}
+            animar={animar}
+            setAnimar={setAnimar}
+            setNombre={setNombre}
+            setCategoria={setCategoria}
+        />}
     </div>
   )
 }

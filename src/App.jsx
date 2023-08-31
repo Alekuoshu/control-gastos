@@ -108,6 +108,12 @@ function App() {
   const eliminarGasto = id => {
     const gastoActualizado = gastos.filter( gasto => gasto.id !== id);
     setGastos(gastoActualizado);
+
+    // actualiza el filtrado
+    if(filtro) {
+      const gastoFiltradoActualizado = gastosFiltrados.filter( gasto => gasto.id !== id);
+      setGastosFiltrados(gastoFiltradoActualizado)
+    }
   }
 
   return (
