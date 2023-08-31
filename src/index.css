@@ -645,4 +645,12 @@ body .modal {
     border-radius: 0rem 1rem 1rem 0rem;
     border: 1px solid #fff;
   }
+  .modal-add-default {
+    height: auto;
+    width: 90%;
+  }
+  .modal-container {
+    padding: 20px;
+    padding-top: 0;
+  }
 }
