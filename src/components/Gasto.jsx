@@ -34,7 +34,7 @@ const dicionarioIconos = {
     suscripciones : IconoSuscripciones
 }
 
-const Gasto = ({gasto, setGastoEditar, eliminarGasto}) => {
+const Gasto = ({gasto, setGastoEditar, eliminarGasto, settings}) => {
     const {categoria, nombre, cantidad, id, fecha} = gasto
 
     // react-swipeable component
@@ -79,7 +79,7 @@ const Gasto = ({gasto, setGastoEditar, eliminarGasto}) => {
                 </div>
             </div>
 
-            <p className="cantidad-gasto">{FormatearCantidad(cantidad)}</p>
+            <p className="cantidad-gasto">{FormatearCantidad(cantidad, settings.moneda)}</p>
         </div>
         </SwipeableListItem>
     </SwipeableList>

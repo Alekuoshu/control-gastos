@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
+import { ReactNotifications, Store } from 'react-notifications-component'
 import Header from './components/Header'
 import Modal from './components/Modal'
 import Filtros from './components/Filtros'
 import ListadoGastos from './components/ListadoGastos'
 import { generateId } from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
+import IconoNuevoOscuro from './img/nuevo-gasto-oscuro.png'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css/animate.min.css'
+
 
 function App() {
 
@@ -20,6 +25,29 @@ function App() {
   const [gastoEditar, setGastoEditar] = useState({})
   const [filtro, setFiltro] = useState('')
   const [gastosFiltrados, setGastosFiltrados] = useState([])
+  const [settings, setSettings] = useState(
+    localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : {'tema':false, 'moneda':'usd'}
+  )
+  
+  // Valida el tema oscuro o por defecto
+  useEffect(() => {
+    if (settings.tema === true) {
+        
+        const link = document.createElement('link');
+        link.id = 'dark-theme';
+        link.href = './src/css/dark-theme.css';
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+
+    } else {
+
+        const existingLink = document.getElementById('dark-theme');
+        if (existingLink) {
+          existingLink.remove(); // Elimina el elemento <link> que enlaza al archivo dark-theme.css
+        }
+
+    }
+  }, [settings.tema]);
 
   // se inicia el modal para la edición del gasto
   useEffect( () => {
@@ -32,6 +60,11 @@ function App() {
       
     }
   }, [gastoEditar])
+
+  // guarda en localStorage settings
+  useEffect( () => {
+    localStorage.setItem('settings', JSON.stringify(settings) ?? {'tema':false, 'moneda':'usd'})
+  }, [settings])
 
   // guarda en localStorage presupuesto
   useEffect( () => {
@@ -60,6 +93,26 @@ function App() {
     }
   }, [])
 
+  // sistema de notificaciones
+  const Notification = (type, title, message, duration) => {
+
+    Store.addNotification({
+        title: title,
+        message: message,
+        type: type,
+        insert: "bottom",
+        container: "bottom-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+        duration: duration,
+        onScreen: true,
+        pauseOnHover: true,
+        // showIcon: true
+        }
+    })
+  }
+
   // nuevo gasto
   const handleNuevoGasto = () => {
     setModal(true)
@@ -85,6 +138,10 @@ function App() {
         setGastosFiltrados(gastoFiltradoActualizado)
       }
 
+      setTimeout(function () {
+        Notification("default", "¡Info!", "Gasto editado con éxito", 2000);
+      }, 400);
+
     }else{
       // Nuevo
       gasto.id = generateId();
@@ -95,6 +152,11 @@ function App() {
       if(filtro && gasto.categoria === filtro) {
         setGastosFiltrados([gasto, ...gastosFiltrados])
       }
+
+      setTimeout(function () {
+        Notification("default", "¡Info!", "Gasto agregado con éxito", 2000);
+      }, 400);
+
     }
 
     setAnimarModal(false)
@@ -119,6 +181,8 @@ function App() {
   return (
     <div className={modal ? 'fijar' : ''}>
 
+      <ReactNotifications />
+
       <Header
         gastos={gastos}
         setGastos={setGastos}
@@ -126,6 +190,9 @@ function App() {
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
         setIsValidPresupuesto={setIsValidPresupuesto}
+        settings={settings}
+        setSettings={setSettings}
+        Notification={Notification}
       />
 
       {isValidPresupuesto && (
@@ -141,11 +208,12 @@ function App() {
               eliminarGasto={eliminarGasto}
               filtro={filtro}
               gastosFiltrados={gastosFiltrados}
+              settings={settings}
             />
           </main>
           <div className='nuevo-gasto'>
             <img 
-              src={IconoNuevoGasto} 
+              src={settings.tema ? IconoNuevoOscuro : IconoNuevoGasto} 
               alt="Nuevo Gasto" 
               title='Nuevo Gasto'
               onClick={handleNuevoGasto}
@@ -161,6 +229,7 @@ function App() {
         guardarGastos={guardarGastos}
         gastoEditar={gastoEditar}
         setGastoEditar={setGastoEditar}
+        Notification={Notification}
       />}
 
       
@@ -168,4 +237,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

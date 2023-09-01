@@ -19,10 +19,10 @@ export const formatearFecha = (fecha) => {
   return fechaNUeva.toLocaleDateString("es-ES", opciones);
 };
 
-export const FormatearCantidad = (cantidad) => {
+export const FormatearCantidad = (cantidad, moneda) => {
   const opciones = {
     style: "currency",
-    currency: "USD",
+    currency: moneda === "usd" ? moneda : "COP",
     minimumFractionDigits: 0, // Sin decimales
     maximumFractionDigits: 0, // Sin decimales
     useGrouping: true, // Para usar puntos en miles y millones

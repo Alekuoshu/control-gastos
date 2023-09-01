@@ -9,14 +9,14 @@ const Modal = ({
     setAnimarModal, 
     guardarGastos, 
     gastoEditar, 
-    setGastoEditar
+    setGastoEditar,
+    Notification
 
 }) => {
 
     const [nombre, setNombre] = useState('')
     const [cantidad, setCantidad] = useState('')
     const [categoria, setCategoria] = useState('')
-    const [mensaje, setMensaje] = useState('')
     const [id, setId] = useState('')
     const [fecha, setFecha] = useState('')
     const [modalAddDefault, setModalAddDefault] = useState(false)
@@ -48,12 +48,7 @@ const Modal = ({
         e.preventDefault()
 
         if ([nombre, cantidad, categoria].includes('')){
-            setMensaje('Todos los campos son obligatorios')
-
-            setTimeout(function () {
-                setMensaje('')
-            }, 3000);
-
+            Notification("danger", "Error!", "Todos los campos son obligatorios", 3000);
             return;
         }
 
@@ -87,7 +82,6 @@ const Modal = ({
             onSubmit={handleSubmit}
         >
             <legend>{gastoEditar.id ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
-            {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
 
             <div className="campo">
                 <label htmlFor="nombre">Nombre Gasto</label>

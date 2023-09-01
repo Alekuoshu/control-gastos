@@ -1,0 +1,27 @@
+/* THEME DARK */
+header {
+  background-color: #444;
+}
+
+.formulario input[type="submit"],
+.formulario button,
+.formulario .campo a {
+  background-color: #333;
+}
+
+.formulario input[type="submit"]:hover,
+.formulario button:hover,
+.formulario .campo a:hover {
+  background-color: #222;
+}
+
+.contenido-presupuesto span {
+  color: #444;
+}
+
+.reset-app {
+  background-color: #a70950;
+}
+.reset-app:hover {
+  background-color: #5c050c;
+}

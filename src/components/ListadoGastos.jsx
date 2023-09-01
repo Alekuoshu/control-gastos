@@ -7,7 +7,8 @@ const ListadoGastos = ({
   setGastoEditar, 
   eliminarGasto,
   filtro,
-  gastosFiltrados
+  gastosFiltrados,
+  settings
 
 }) => {
   const [gatadoFiltro, setGastadoFiltro] = useState(0)
@@ -23,7 +24,7 @@ const ListadoGastos = ({
       {
         filtro ? (
           <>
-            <h2>{gastosFiltrados.length ? 'Gastos -> Total: ' + FormatearCantidad(gatadoFiltro) : 'No hay gastos en esta categoría'}</h2>
+            <h2>{gastosFiltrados.length ? 'Gastos -> Total: ' + FormatearCantidad(gatadoFiltro, settings.moneda) : 'No hay gastos en esta categoría'}</h2>
 
             {gastosFiltrados.map( gasto => (
                 <Gasto 
@@ -31,6 +32,7 @@ const ListadoGastos = ({
                     gasto={gasto}
                     setGastoEditar={setGastoEditar}
                     eliminarGasto={eliminarGasto}
+                    settings={settings}
                 />
             ))}
           </>
@@ -44,6 +46,7 @@ const ListadoGastos = ({
                     gasto={gasto}
                     setGastoEditar={setGastoEditar}
                     eliminarGasto={eliminarGasto}
+                    settings={settings}
                 />
             ))}
           </>

@@ -3,7 +3,16 @@ import { FormatearCantidad } from "../helpers"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const ControlPresupuesto = ({gastos, setGastos, presupuesto, setPresupuesto, setIsValidPresupuesto}) => {
+const ControlPresupuesto = ({
+    gastos, 
+    setGastos, 
+    presupuesto, 
+    setPresupuesto, 
+    setIsValidPresupuesto, 
+    settings,
+    Notification
+
+}) => {
 
     const [porcentaje, setPorcentaje] = useState(0)
     const [disponible, setDisponible] = useState(0)
@@ -34,6 +43,7 @@ const ControlPresupuesto = ({gastos, setGastos, presupuesto, setPresupuesto, set
             setIsValidPresupuesto(false)
             setGastos([])
             setPresupuesto(0)
+            Notification("default", "¡Info!", "Valores iniciales reseteados", 3000);
         }
      }
 
@@ -41,15 +51,33 @@ const ControlPresupuesto = ({gastos, setGastos, presupuesto, setPresupuesto, set
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
         <div>
-            <CircularProgressbar 
-                value={porcentaje}
-                text={`${porcentaje}% Gastado`}
-                styles={buildStyles({
-                    pathColor: disponible < 0 ? '#DC2626' : '#3B82F6',
-                    trailColor: '#F5F5F5',
-                    textColor: disponible < 0 ? '#DC2626' : '#3B82F6',
-                })}
-            />
+            {settings.tema ? (
+
+                <CircularProgressbar 
+                    value={porcentaje}
+                    text={`${porcentaje}% Gastado`}
+                    styles={buildStyles({
+                        pathColor: disponible < 0 ? '#DC2626' : '#555',
+                        trailColor: '#F5F5F5',
+                        textColor: disponible < 0 ? '#DC2626' : '#444',
+                    })}
+                />
+
+            ) : (
+
+                <CircularProgressbar 
+                    value={porcentaje}
+                    text={`${porcentaje}% Gastado`}
+                    styles={buildStyles({
+                        pathColor: disponible < 0 ? '#DC2626' : '#3B82F6',
+                        trailColor: '#F5F5F5',
+                        textColor: disponible < 0 ? '#DC2626' : '#3B82F6',
+                    })}
+                />
+            )
+                
+            }
+            
         </div>
 
         <div className="contenido-presupuesto">
@@ -61,15 +89,15 @@ const ControlPresupuesto = ({gastos, setGastos, presupuesto, setPresupuesto, set
                 Resetear App
             </button>
             <p>
-                <span>Presupuesto: </span>{FormatearCantidad(presupuesto)}
+                <span>Presupuesto: </span>{FormatearCantidad(presupuesto, settings.moneda)}
             </p>
 
             <p className={`${disponible < 0 ? 'negativo' : ''}`}>
-                <span>Disponible: </span>{FormatearCantidad(disponible)}
+                <span>Disponible: </span>{FormatearCantidad(disponible, settings.moneda)}
             </p>
 
             <p>
-                <span>Gastado: </span>{FormatearCantidad(gastado)}
+                <span>Gastado: </span>{FormatearCantidad(gastado, settings.moneda)}
             </p>
 
         </div>
