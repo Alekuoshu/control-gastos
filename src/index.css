@@ -666,7 +666,8 @@ label.switch {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  .modal .formulario {
+  .modal .formulario,
+  .modal-settings .formulario {
     width: 30rem;
   }
   .formulario input[type="submit"],
