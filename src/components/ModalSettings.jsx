@@ -8,12 +8,16 @@ const ModalSettings = ({
     setAnimarModalSettings,
     settings,
     setSettings,
-    Notification
+    Notification,
+    presupuesto, 
+    setPresupuesto,
+    isValidPresupuesto
 
 }) => {
 
     const [tema, setTema] = useState(false);
     const [moneda, setMoneda] = useState('usd');
+    const [presupuestoInicial, setPresupuestoInicial] = useState('');
 
     // carga los inpust del formulario
     useEffect( () => {
@@ -106,6 +110,21 @@ const ModalSettings = ({
                     </select>
 
                 </div>
+                {
+                    isValidPresupuesto && (
+                        <div className="campo">
+                            <label htmlFor="presupuesto">Presupuesto Inicial</label>
+
+                            <input 
+                                id="presupuesto"
+                                type="tel" 
+                                value={presupuesto}
+                                onChange={e => setPresupuesto(Number(e.target.value))}
+                            />
+
+                        </div>
+                    )
+                }
 
                 <button type='submit'>Guardar Cambios</button>
 

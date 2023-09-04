@@ -33,7 +33,7 @@ const ControlPresupuesto = ({
         setGastado(totalGastado)
         setDisponible(totalDisponible)
 
-     }, [gastos])
+     }, [gastos, presupuesto])
 
     //  resetea la app
      const handleResetApp = () => {

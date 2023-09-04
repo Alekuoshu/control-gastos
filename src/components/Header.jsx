@@ -69,6 +69,9 @@ const Header = ({
         settings={settings}
         setSettings={setSettings}
         Notification={Notification}
+        presupuesto={presupuesto}
+        setPresupuesto={setPresupuesto}
+        isValidPresupuesto={isValidPresupuesto}
       />}
     </header>
   )
