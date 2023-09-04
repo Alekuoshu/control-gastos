@@ -34,21 +34,18 @@ function App() {
     if (settings.tema === true) {
 
       document.body.classList.add('dark-theme');
+      // Forzar un redibujado después de un pequeño retraso
+      setTimeout(() => {
+        window.scrollTo(0, 0); // Cambia la posición de desplazamiento
+      }, 0);
         
-        // const link = document.createElement('link');
-        // link.id = 'dark-theme';
-        // link.href = './src/css/dark-theme.css';
-        // link.rel = 'stylesheet';
-        // document.head.appendChild(link);
-
     } else {
 
       document.body.classList.remove('dark-theme');
-
-        // const existingLink = document.getElementById('dark-theme');
-        // if (existingLink) {
-        //   existingLink.remove(); // Elimina el elemento <link> que enlaza al archivo dark-theme.css
-        // }
+      // Forzar un redibujado después de un pequeño retraso
+      setTimeout(() => {
+        window.scrollTo(0, 0); // Cambia la posición de desplazamiento
+      }, 0);
 
     }
   }, [settings.tema]);
