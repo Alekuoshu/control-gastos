@@ -1,12 +1,15 @@
 /* THEME DARK */
+body.dark-theme {
+  background-color: #ddd;
+}
 body.dark-theme header {
-  background-color: #444;
+  background-color: var(--dark);
 }
 
 body.dark-theme .formulario input[type="submit"],
 body.dark-theme .formulario button,
 body.dark-theme .formulario .campo a {
-  background-color: #333;
+  background-color: var(--dark);
 }
 
 body.dark-theme .formulario input[type="submit"]:hover,
@@ -16,7 +19,7 @@ body.dark-theme .formulario .campo a:hover {
 }
 
 body.dark-theme .contenido-presupuesto span {
-  color: #444;
+  color: var(--dark);
 }
 
 body.dark-theme .reset-app {

@@ -34,18 +34,10 @@ function App() {
     if (settings.tema === true) {
 
       document.body.classList.add('dark-theme');
-      // Forzar un redibujado después de un pequeño retraso
-      setTimeout(() => {
-        window.scrollTo(0, 0); // Cambia la posición de desplazamiento
-      }, 100);
         
     } else {
 
       document.body.classList.remove('dark-theme');
-      // Forzar un redibujado después de un pequeño retraso
-      setTimeout(() => {
-        window.scrollTo(0, 0); // Cambia la posición de desplazamiento
-      }, 100);
 
     }
   }, [settings.tema]);
