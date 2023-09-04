@@ -37,7 +37,7 @@ function App() {
       // Forzar un redibujado después de un pequeño retraso
       setTimeout(() => {
         window.scrollTo(0, 0); // Cambia la posición de desplazamiento
-      }, 0);
+      }, 100);
         
     } else {
 
@@ -45,7 +45,7 @@ function App() {
       // Forzar un redibujado después de un pequeño retraso
       setTimeout(() => {
         window.scrollTo(0, 0); // Cambia la posición de desplazamiento
-      }, 0);
+      }, 100);
 
     }
   }, [settings.tema]);
