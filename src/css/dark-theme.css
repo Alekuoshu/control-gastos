@@ -1,27 +1,27 @@
 /* THEME DARK */
-header {
+body.dark-theme header {
   background-color: #444;
 }
 
-.formulario input[type="submit"],
-.formulario button,
-.formulario .campo a {
+body.dark-theme .formulario input[type="submit"],
+body.dark-theme .formulario button,
+body.dark-theme .formulario .campo a {
   background-color: #333;
 }
 
-.formulario input[type="submit"]:hover,
-.formulario button:hover,
-.formulario .campo a:hover {
+body.dark-theme .formulario input[type="submit"]:hover,
+body.dark-theme .formulario button:hover,
+body.dark-theme .formulario .campo a:hover {
   background-color: #222;
 }
 
-.contenido-presupuesto span {
+body.dark-theme .contenido-presupuesto span {
   color: #444;
 }
 
-.reset-app {
+body.dark-theme .reset-app {
   background-color: #a70950;
 }
-.reset-app:hover {
+body.dark-theme .reset-app:hover {
   background-color: #5c050c;
 }

@@ -32,19 +32,23 @@ function App() {
   // Valida el tema oscuro o por defecto
   useEffect(() => {
     if (settings.tema === true) {
+
+      document.body.classList.add('dark-theme');
         
-        const link = document.createElement('link');
-        link.id = 'dark-theme';
-        link.href = './src/css/dark-theme.css';
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
+        // const link = document.createElement('link');
+        // link.id = 'dark-theme';
+        // link.href = './src/css/dark-theme.css';
+        // link.rel = 'stylesheet';
+        // document.head.appendChild(link);
 
     } else {
 
-        const existingLink = document.getElementById('dark-theme');
-        if (existingLink) {
-          existingLink.remove(); // Elimina el elemento <link> que enlaza al archivo dark-theme.css
-        }
+      document.body.classList.remove('dark-theme');
+
+        // const existingLink = document.getElementById('dark-theme');
+        // if (existingLink) {
+        //   existingLink.remove(); // Elimina el elemento <link> que enlaza al archivo dark-theme.css
+        // }
 
     }
   }, [settings.tema]);
