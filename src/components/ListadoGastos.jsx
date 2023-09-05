@@ -18,40 +18,30 @@ const ListadoGastos = ({
     setGastadoFiltro(totalGastadoFiltro)
   }, [gastosFiltrados])
 
+  const displayedGastos = filtro ? gastosFiltrados : gastos;
+
   return (
     <div className="listado-gastos contenedor">
 
-      {
-        filtro ? (
-          <>
-            <h2>{gastosFiltrados.length ? 'Gastos -> Total: ' + FormatearCantidad(gatadoFiltro, settings.moneda) : 'No hay gastos en esta categoría'}</h2>
+      <h2>
+        {filtro ? gastosFiltrados.length 
+          ? "Gastos -> Total: " + FormatearCantidad(gatadoFiltro, settings.moneda)
+          : "No hay gastos en esta categoría"
+          : gastos.length
+          ? "Gastos"
+          : "No hay gastos aún"
+        }
+      </h2>
 
-            {gastosFiltrados.map( gasto => (
-                <Gasto 
-                    key={gasto.id}
-                    gasto={gasto}
-                    setGastoEditar={setGastoEditar}
-                    eliminarGasto={eliminarGasto}
-                    settings={settings}
-                />
-            ))}
-          </>
-        ) : (
-          <>
-            <h2>{gastos.length ? 'Gastos' : 'No hay gastos aún'}</h2>
-
-            {gastos.map( gasto => (
-                <Gasto 
-                    key={gasto.id}
-                    gasto={gasto}
-                    setGastoEditar={setGastoEditar}
-                    eliminarGasto={eliminarGasto}
-                    settings={settings}
-                />
-            ))}
-          </>
-        )
-      }
+        {displayedGastos.map( gasto => (
+            <Gasto 
+                key={gasto.id}
+                gasto={gasto}
+                setGastoEditar={setGastoEditar}
+                eliminarGasto={eliminarGasto}
+                settings={settings}
+            />
+        ))}
 
     </div>
   )
