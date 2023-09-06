@@ -43,6 +43,11 @@ const ModalSettings = ({
     // envia el formulario y guarda datos
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if(!presupuesto || presupuesto < 0){
+            Notification("danger", "¡Error!", "No es un presupuesto válido", 3000);
+            return;
+        }
         
         setSettings({
             'tema':tema,
@@ -119,7 +124,12 @@ const ModalSettings = ({
                                 id="presupuesto"
                                 type="tel" 
                                 value={presupuesto}
-                                onChange={e => setPresupuesto(Number(e.target.value))}
+                                onChange={e => {
+                                    const inputValue = e.target.value;
+                                    if (/^\d*$/.test(inputValue)) {
+                                        setPresupuesto(Number(inputValue));
+                                    }
+                                }}
                             />
 
                         </div>
