@@ -15,6 +15,17 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto, N
         setIsValidPresupuesto(true)
 
     }
+
+    const handleInputChange = (e) => {
+        const inputValue = e.target.value;
+        if (/^[1-9]\d*$/.test(inputValue)) {
+            setPresupuesto(Number(inputValue));
+        }else {
+            // Si el valor no es válido, establece el presupuesto en 0
+            setPresupuesto(0);
+          }
+    };
+
   return (
     <div className="contenedor-presupuesto contenedor sombra">
         <form onSubmit={handlePresupuesto} className="formulario">
@@ -24,12 +35,7 @@ const NuevoPresupuesto = ({presupuesto, setPresupuesto, setIsValidPresupuesto, N
                     type="tel" 
                     className="nuevo-presupuesto"
                     placeholder="Añade tu Presupuesto"
-                    onChange={e => {
-                        const inputValue = e.target.value;
-                        if (/^[1-9]\d*$/.test(inputValue)) {
-                            setPresupuesto(Number(inputValue));
-                        }
-                    }}
+                    onChange={handleInputChange}
                 
                 />
             </div>

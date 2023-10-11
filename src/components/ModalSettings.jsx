@@ -44,7 +44,8 @@ const ModalSettings = ({
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!presupuesto || presupuesto < 0){
+        if(isValidPresupuesto && (!presupuesto || presupuesto < 1)){
+            console.log('aqui');
             Notification("danger", "¡Error!", "No es un presupuesto válido", 3000);
             return;
         }
