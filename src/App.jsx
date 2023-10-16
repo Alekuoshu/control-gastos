@@ -28,6 +28,7 @@ function App() {
   const [settings, setSettings] = useState(
     localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : {'tema':false, 'moneda':'usd'}
   )
+  const [envioHabilitado, setEnvioHabilitado] = useState(true);
   
   // Valida el tema oscuro o por defecto
   useEffect(() => {
@@ -109,6 +110,7 @@ function App() {
   // nuevo gasto
   const handleNuevoGasto = () => {
     setModal(true)
+    setEnvioHabilitado(true)
 
     setGastoEditar({})
 
@@ -223,6 +225,8 @@ function App() {
         gastoEditar={gastoEditar}
         setGastoEditar={setGastoEditar}
         Notification={Notification}
+        envioHabilitado={envioHabilitado}
+        setEnvioHabilitado={setEnvioHabilitado}
       />}
 
       

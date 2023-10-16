@@ -10,7 +10,9 @@ const Modal = ({
     guardarGastos, 
     gastoEditar, 
     setGastoEditar,
-    Notification
+    Notification,
+    envioHabilitado,
+    setEnvioHabilitado
 
 }) => {
 
@@ -51,6 +53,8 @@ const Modal = ({
             Notification("danger", "Error!", "Todos los campos son obligatorios", 3000);
             return;
         }
+
+        setEnvioHabilitado(false)
 
         guardarGastos({nombre, cantidad, categoria, id, fecha})
         OcultarModal();
@@ -139,7 +143,7 @@ const Modal = ({
                 </select>
             </div>
 
-            <button type='submit'>{gastoEditar.id ? 'Guardar Cambios' : 'Añadir Gasto'}</button>
+            <button disabled={envioHabilitado ? false : true} type='submit'>{gastoEditar.id ? 'Guardar Cambios' : 'Añadir Gasto'}</button>
         </form>
 
         {modalAddDefault && <ModalGastoDefault 
