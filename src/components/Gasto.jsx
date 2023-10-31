@@ -34,13 +34,27 @@ const dicionarioIconos = {
     suscripciones : IconoSuscripciones
 }
 
-const Gasto = ({gasto, setGastoEditar, eliminarGasto, settings}) => {
+const Gasto = ({
+    gasto, 
+    setGastoEditar, 
+    eliminarGasto, 
+    settings,
+    setEnvioHabilitado
+    
+}) => {
     const {categoria, nombre, cantidad, id, fecha} = gasto
 
     // react-swipeable component
     const leadingActions = () => (
         <LeadingActions>
-          <SwipeAction onClick={() => setGastoEditar(gasto)}>
+          <SwipeAction onClick={() => {
+            
+            setGastoEditar(gasto);
+            setEnvioHabilitado(true);
+        
+          }}
+            
+            >
             Editar
           </SwipeAction>
         </LeadingActions>

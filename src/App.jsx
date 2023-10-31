@@ -188,6 +188,8 @@ function App() {
         settings={settings}
         setSettings={setSettings}
         Notification={Notification}
+        envioHabilitado={envioHabilitado}
+        setEnvioHabilitado={setEnvioHabilitado}
       />
 
       {isValidPresupuesto && (
@@ -204,6 +206,7 @@ function App() {
               filtro={filtro}
               gastosFiltrados={gastosFiltrados}
               settings={settings}
+              setEnvioHabilitado={setEnvioHabilitado}
             />
           </main>
           <div className='nuevo-gasto'>

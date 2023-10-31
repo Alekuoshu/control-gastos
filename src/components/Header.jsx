@@ -13,7 +13,9 @@ const Header = ({
   setIsValidPresupuesto,
   settings,
   setSettings,
-  Notification
+  Notification,
+  envioHabilitado,
+  setEnvioHabilitado
 
 }) => {
 
@@ -23,6 +25,8 @@ const Header = ({
   const handleClickSettings = () => {
 
     setModalSettings(true)
+
+    setEnvioHabilitado(true)
 
     setTimeout(function () {
       setAnimarModalSettings(true)
@@ -72,6 +76,8 @@ const Header = ({
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
+        envioHabilitado={envioHabilitado}
+        setEnvioHabilitado={setEnvioHabilitado}
       />}
     </header>
   )

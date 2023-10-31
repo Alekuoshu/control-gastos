@@ -8,7 +8,8 @@ const ListadoGastos = ({
   eliminarGasto,
   filtro,
   gastosFiltrados,
-  settings
+  settings,
+  setEnvioHabilitado
 
 }) => {
   const [gatadoFiltro, setGastadoFiltro] = useState(0)
@@ -40,6 +41,7 @@ const ListadoGastos = ({
                 setGastoEditar={setGastoEditar}
                 eliminarGasto={eliminarGasto}
                 settings={settings}
+                setEnvioHabilitado={setEnvioHabilitado}
             />
         ))}
 

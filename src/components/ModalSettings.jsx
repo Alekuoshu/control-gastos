@@ -11,7 +11,9 @@ const ModalSettings = ({
     Notification,
     presupuesto, 
     setPresupuesto,
-    isValidPresupuesto
+    isValidPresupuesto,
+    envioHabilitado,
+    setEnvioHabilitado
 
 }) => {
 
@@ -25,6 +27,7 @@ const ModalSettings = ({
             setTema(settings.tema)
             setMoneda(settings.moneda)
         }
+        setPresupuestoInicial(presupuesto || '');
     }, [])
 
     const handleChange = nextChecked => {
@@ -44,16 +47,20 @@ const ModalSettings = ({
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(isValidPresupuesto && (!presupuesto || presupuesto < 1)){
-            console.log('aqui');
+        if(isValidPresupuesto && (!presupuestoInicial || presupuestoInicial < 1)){
+            //console.log('aqui');
             Notification("danger", "¡Error!", "No es un presupuesto válido", 3000);
             return;
         }
+
+        setEnvioHabilitado(false)
         
         setSettings({
             'tema':tema,
             'moneda':moneda
         })
+
+        setPresupuesto(presupuestoInicial)
 
         OcultarModal();
         setTimeout(function () {
@@ -124,11 +131,11 @@ const ModalSettings = ({
                             <input 
                                 id="presupuesto"
                                 type="tel" 
-                                value={presupuesto}
+                                value={presupuestoInicial}
                                 onChange={e => {
                                     const inputValue = e.target.value;
                                     if (/^\d*$/.test(inputValue)) {
-                                        setPresupuesto(Number(inputValue));
+                                        setPresupuestoInicial(Number(inputValue));
                                     }
                                 }}
                             />
@@ -137,7 +144,7 @@ const ModalSettings = ({
                     )
                 }
 
-                <button type='submit'>Guardar Cambios</button>
+                <button disabled={envioHabilitado ? false : true} type='submit'>Guardar Cambios</button>
 
             </form>
         </div>
